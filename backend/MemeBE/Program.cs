@@ -18,7 +18,8 @@ builder.Services.AddCors(options =>
                             "https://memethegathering.wielki.ch", 
                             "https://mtg.wielki.ch",
                             "https://mtgapi.wielki.ch",
-                            "https://mtgapi.adamsiwek.pl") // URL innego serwera
+                            "https://mtgapi.adamsiwek.pl",
+                            "https://mtgapi.piotrmadry.pl") // URL innego serwera
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials(); // Ważne dla SignalR

@@ -1,16 +1,16 @@
 FROM nginx:alpine
 
 # Copy nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY client/nginx.conf /etc/nginx/nginx.conf
 
 # Copy static files to nginx html directory
-COPY index.html /usr/share/nginx/html/
-COPY static/ /usr/share/nginx/html/static/
-COPY mem.jpg /usr/share/nginx/html/
-COPY background.jpg /usr/share/nginx/html/
-COPY Background.webp /usr/share/nginx/html/
-COPY playericon.png /usr/share/nginx/html/
-COPY smilewb.png /usr/share/nginx/html/
+COPY client/index.html /usr/share/nginx/html/
+COPY client/static/ /usr/share/nginx/html/static/
+COPY client/mem.jpg /usr/share/nginx/html/
+COPY client/background.jpg /usr/share/nginx/html/
+COPY client/Background.webp /usr/share/nginx/html/
+COPY client/playericon.png /usr/share/nginx/html/
+COPY client/smilewb.png /usr/share/nginx/html/
 
 # Configure nginx to serve the files
 EXPOSE 80
