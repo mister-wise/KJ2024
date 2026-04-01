@@ -1,0 +1,32 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/MemeBE/Dockerfile
+    container_name: mtg-backend
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+      - "${BACKEND_PORT_SSL:-8081}:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
+      - ASPNETCORE_URLS=http://+:8080
+    restart: unless-stopped
+    networks:
+      - mtg-network
+
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: mtg-client
+    ports:
+      - "${CLIENT_PORT:-3000}:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - mtg-network
+
+networks:
+  mtg-network:
+    driver: bridge
